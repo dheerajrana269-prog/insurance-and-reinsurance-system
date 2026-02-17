@@ -34,7 +34,7 @@ const PolicyActions = ({ policy, refresh }) => {
     setIsLoading(true);
     try {
       await policyAPI.submitPolicy(policy._id);
-      setSuccessMsg('Policy submitted for approval. An underwriter will review it soon.');
+      setSuccessMsg('Policy submitted for approval. ');
       setTimeout(() => refresh(), 1000);
     } catch (err) {
       setActionError(err.response?.data?.message || 'Failed to submit policy');

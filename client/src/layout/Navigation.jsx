@@ -14,6 +14,7 @@ const Navigation = () => {
   let menuItems = [];
   if (user?.role === 'ADMIN') {
     menuItems.push({ label: 'Users List', path: '/admin', icon: '⚙️' });
+    menuItems.push({ label: 'Audit Logs', path: '/admin/audit-logs', icon: '📜' });
     menuItems.push({ label: 'Policies', path: '/policy', icon: '📋' });
     menuItems.push({ label: 'Claims', path: '/claims', icon: '💼' });
     menuItems.push({ label: 'Reinsurance', path: '/reinsurance', icon: '🔄' });

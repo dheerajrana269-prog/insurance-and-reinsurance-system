@@ -12,4 +12,7 @@ router.post('/users', rbacMiddleware(['ADMIN']), adminController.createUser);
 router.put('/users/:id', rbacMiddleware(['ADMIN']), adminController.updateUser);
 router.delete('/users/:id', rbacMiddleware(['ADMIN']), adminController.deleteUser);
 
+// Audit logs
+router.get('/audit-logs', rbacMiddleware(['ADMIN']), adminController.getAuditLogs);
+
 module.exports = router;

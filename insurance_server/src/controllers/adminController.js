@@ -1,5 +1,6 @@
 
 const User = require('../models/User');
+const AuditLog = require('../models/AuditLog');
 const { logAction } = require('../services/auditService');
 
 // Get all users
@@ -63,4 +64,17 @@ exports.deleteUser = async (req, res) => {
     ipAddress: req.ip
   });
   res.json({ message: 'User deleted' });
+};
+
+// Get audit logs
+exports.getAuditLogs = async (req, res) => {
+  try {
+    const logs = await AuditLog.find()
+      .populate('performedBy', 'username email')
+      .sort({ performedAt: -1 })
+      .limit(500);
+    res.json(logs);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch audit logs' });
+  }
 };
